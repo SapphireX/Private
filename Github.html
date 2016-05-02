@@ -1,0 +1,130 @@
+<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+</head>
+
+<body>
+
+  
+ 
+ <style type="text/css">
+
+.hidden { visibility: hidden; }
+.unhidden { visibility: visible; }
+</style>
+ 
+
+
+
+ 
+<!-- logika wyszukiwania --> 
+
+<script>
+var haystackText = "";
+var p = document.getElementById("textmessage");
+
+
+
+function findMyText(find, replacement) {
+     if (haystackText.length == 0) {
+          haystackText = document.getElementById("content").innerHTML;
+     }
+	 if (find.length == 0 && replacement.length == 0  ) {
+			  var p = document.getElementById("textmessage");
+			  p.textContent ="Wprowadz dane!";
+               return;   														         
+		}				
+				
+		var match = new RegExp(find, "ig");  
+        var replaced = "";
+		
+        var counter = (haystackText.match(match)).length;	
+	  
+     if (replacement.length > 0 && find.length > 0) {	   
+          replaced = haystackText.replace(match, replacement);
+		  document.getElementById('textmessage').innerHTML =  "Zmieniono :" + counter;			
+	 
+     }
+	 else if (replacement.length > 0 && find.length == 0){
+	        	 var p = document.getElementById("textmessage");
+			      p.textContent ="Brak danych do zamiany!";
+		    			 
+			 		  return;   			 
+	 }	
+     else {
+          var boldText = "<div class='count' style=\"background-color: yellow; display: inline; font-weight: bold;\">" + find + "</div>";
+          replaced = haystackText.replace(match, boldText);	  
+		  document.getElementById('textmessage').innerHTML =  "trafieñ :" + counter;	 		  
+				  			 
+    }
+	  document.getElementById("content").innerHTML = replaced;
+	  
+    
+	  
+	  
+}
+</script>
+<!-- W³¹cz/wy³acz widzialnoœæ przycisku zmien/wyszukaj -->
+   <script type="text/javascript">
+        function toggle_visibility(id) {
+           var e = document.getElementById(id);
+           if(e.style.display == 'block')
+              e.style.display = 'none';
+           else
+              e.style.display = 'block';
+        }
+ </script>
+	
+	
+
+	
+	
+
+
+
+
+	<!-- Wyœwietla dane "wyszukaj"-->
+<div  style="position: absolute; margin-left: 15px;z-index:1;background: white; width:350px; " >
+
+
+<button   href="#" onclick="toggle_visibility('foo');" >Szukaj/Zmieñ</button>
+<div id="foo" style="display: none ;height: 15px;"  >
+
+	
+
+
+<input style="width:350px;  margin-bottom: 5px; margin-top: 15px;"  id="find" name="find" placeholder="Zmieñ z/Wyszukaj" type="text">
+<br>
+<input  style="width:350px;  margin-bottom: 5px;" id="replacement" name="replacement" placeholder="Na"type="text">
+<p id="textmessage" style=""><p id="textmessageValue"></p></p>
+
+
+<input type="button" value="Wykonaj" style="float:left;" onClick="findMyText(document.getElementById('find').value, document.getElementById('replacement').value);">
+</div>
+
+</div>
+<!--koniec--wyszukaj-->
+			 
+			 
+<!--sample-of--text-->			 
+			 
+<br/>
+
+<p id="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tortor ligula, euismod quis urna quis, venenatis finibus lorem. Praesent risus ipsum, mattis sit amet porta et, lobortis eu est. Aenean eget sodales lectus. Nullam ac nunc sapien. Morbi condimentum purus eget lorem fermentum, id facilisis elit tempus. Integer dictum elit quis malesuada luctus. Donec lectus diam, euismod quis cursus eget, accumsan et metus. Suspendisse tempus purus at ipsum blandit placerat. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin sed sodales eros. Cras et odio sem. Sed pulvinar gravida dui ac efficitur. Cras id consectetur urna.
+
+Nam consectetur scelerisque felis ac auctor. Nam suscipit orci gravida pulvinar viverra. Cras scelerisque tortor nisi, quis cursus sapien porttitor id. Curabitur cursus elit aliquet orci aliquet ullamcorper. Donec eu nulla odio. Integer sollicitudin dui nisi, suscipit fringilla ligula ullamcorper id. Ut luctus semper lorem nec cursus. Aenean dapibus neque commodo dolor sodales, sed faucibus enim venenatis. Vestibulum finibus turpis lectus. Suspendisse orci augue, auctor id ultrices id, ultrices ut risus. Sed egestas, velit mattis viverra porttitor, sapien ex mollis ligula, vel varius sem velit tristique nunc. Nulla iaculis ante vel dui vestibulum vehicula. Nulla sed mauris non lacus commodo tempus id ullamcorper nibh.
+
+Duis a tortor lorem. Nulla et placerat erat. Fusce placerat porta urna. Aenean vel congue dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque efficitur vel augue at vehicula. Etiam hendrerit urna non diam dictum aliquet nec eget neque. Donec interdum libero non libero posuere, vel lacinia dui venenatis.
+
+In hac habitasse platea dictumst. Quisque erat arcu, tempor vitae nisl at, tincidunt luctus lorem. Curabitur nisl risus, ullamcorper vel justo sit amet, pellentesque varius eros. Nunc eu maximus nisi. Curabitur ligula urna, porttitor a lorem eu, molestie accumsan risus. Quisque vel leo vitae lectus convallis euismod. Donec eleifend faucibus consectetur. Vestibulum faucibus nibh nec arcu tristique, volutpat dignissim mi posuere. Integer placerat ut nunc vulputate cursus. Etiam nec ex consectetur, porta arcu sollicitudin, fermentum elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec consectetur diam eu mollis imperdiet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam aliquam a odio pulvinar condimentum. Nam at sagittis dolor.
+
+Aliquam fringilla tortor in magna vestibulum, a hendrerit libero aliquet. Suspendisse luctus ante nec tellus tincidunt, id tristique metus ullamcorper. Donec ut convallis sapien, id luctus massa. Nam tristique porta leo in posuere. Phasellus maximus vehicula nisi. Pellentesque nec enim lacus. Mauris egestas semper volutpat. Nullam ex felis, tempus sit amet leo nec, euismod aliquet erat. Nullam orci mauris, sodales eu leo ac, tempus fermentum leo. Nam bibendum ultrices sapien, sed lobortis purus luctus ac. Mauris lacinia nisl at eros dignissim eleifend. Maecenas fermentum dolor sed dapibus pretium.</p>
+
+
+
+  
+
+</body>
+
+
+</html>
